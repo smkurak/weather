@@ -11,17 +11,23 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-4 offset-1">
-                <h1>Pogodnoe prilogenie</h1>
-                <form action="">
-                    <label for="city">City</label>
-                    <input type="text" id="city" class="form-control" name="city" value="enter the city">
-                    <input type="submit" name="send" value="evaluate" class="mt-2 btn btn-danger">
+                <h1>Pogoda</h1>
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form }}
+                    <label for="coordinates">City</label>
+                    <input type="text" id="city" class="form-control" name="lon" value="enter the longitude">
+                    <input type="text" id="city" class="form-control" name="lat" value="enter the latitude">
+                    <input type="submit" name="send" value="Submit" class="mt-2 btn btn-danger">
                 </form>
             </div>
+
+
             <div class="col-4 offset-1">
                 <h1>Output</h1>
                 <div class="alert alert-danger">
-                    <b>City</b>{{info.city}} <br>
+                    <b>City</b>{{info.name}} <br>
+                    <b>lat</b>{{info.lat1}} <br>
                     <b>Temperature</b> {{info.temp}} <sup>o</sup> <br>
                     <img src="http://openweathermap.org/img/W/{{info.icon}}.png" alt="Photo" class = "img-thumbnail">
                 </div>
